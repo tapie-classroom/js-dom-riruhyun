@@ -4,82 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>가위바위보 게임</title>
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #f0f0f0;
-        padding: 20px;
-      }
-
-      h1 {
-        color: #333;
-        margin-bottom: 30px;
-      }
-
-      .game-container {
-        background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      }
-
-      .choices {
-        margin: 20px 0;
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-      }
-
-      button {
-        padding: 10px 20px;
-        font-size: 18px;
-        cursor: pointer;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-      }
-
-      button:hover {
-        background-color: #45a049;
-      }
-
-      .result {
-        margin-top: 20px;
-        font-size: 20px;
-        font-weight: bold;
-      }
-
-      .score {
-        margin-top: 20px;
-        font-size: 18px;
-      }
-
-      .snow {
-        color: #45a049;
-        font-size: 24px;
-        position: fixed;
-        top: -20px;
-        animation: fall 3s linear forwards;
-      }
-
-      @keyframes fall {
-        0% {
-          transform: translateY(0) rotate(0deg);
-        }
-        100% {
-          transform: translateY(100vh) rotate(360deg);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>가위바위보 게임</h1>
+    <h1>JUST VERY SIMPLE SIMPLE AND FUN한 가위바위보 게임</h1>
     <div class="game-container">
       <div class="choices">
         <button onclick="play('가위')">가위 ✌️</button>
@@ -89,63 +17,10 @@
       <div class="result" id="result">게임을 시작해주세요!</div>
       <div class="score" id="score">승: 0 | 패: 0 | 무: 0</div>
     </div>
-
-    <script>
-      let wins = 0;
-      let losses = 0;
-      let draws = 0;
-
-      function play(playerChoice) {
-        const choices = ["가위", "바위", "보"];
-        const emoji = ["✌️", "✊", "✋"];
-        const computerChoice = choices[Math.floor(Math.random() * 3)];
-
-        let result = "";
-
-        // 결과 판정
-        if (playerChoice === computerChoice) {
-          result = "무승부!";
-          draws++;
-        } else if (
-          (playerChoice === "가위" && computerChoice === "보") ||
-          (playerChoice === "바위" && computerChoice === "가위") ||
-          (playerChoice === "보" && computerChoice === "바위")
-        ) {
-          result = "승리!";
-          wins++;
-          createSnowEffect();
-        } else {
-          result = "패배!";
-          losses++;
-        }
-
-        // 결과 표시
-        document.getElementById("result").innerHTML = `당신: ${
-          emoji[choices.indexOf(playerChoice)]
-        } vs 컴퓨터: ${emoji[choices.indexOf(computerChoice)]}<br>${result}`;
-
-        // 점수 업데이트
-        document.getElementById(
-          "score"
-        ).innerHTML = `승: ${wins} | 패: ${losses} | 무: ${draws}`;
-      }
-
-      function createSnowEffect() {
-        for (let i = 0; i < 15; i++) {
-          setTimeout(() => {
-            const snowflake = document.createElement("div");
-            snowflake.className = "snow";
-            snowflake.textContent = "승리!";
-            snowflake.style.left = Math.random() * 100 + "vw";
-            snowflake.style.animationDuration = Math.random() * 2 + 2 + "s"; // 2-4초 사이의 랜덤한 시간
-            document.body.appendChild(snowflake);
-
-            snowflake.addEventListener("animationend", () => {
-              snowflake.remove();
-            });
-          }, i * 200);
-        }
-      }
-    </script>
+    <br />
+    <button onclick="clickInf()" id="clickInf">
+      과연 가위바위보는 진짜 33%인가
+    </button>
+    <script src="script.js"></script>
   </body>
 </html>
