@@ -59,6 +59,23 @@
         margin-top: 20px;
         font-size: 18px;
       }
+
+      .snow {
+        color: #45a049;
+        font-size: 24px;
+        position: fixed;
+        top: -20px;
+        animation: fall 3s linear forwards;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -96,6 +113,7 @@
         ) {
           result = "승리!";
           wins++;
+          createSnowEffect();
         } else {
           result = "패배!";
           losses++;
@@ -110,6 +128,23 @@
         document.getElementById(
           "score"
         ).innerHTML = `승: ${wins} | 패: ${losses} | 무: ${draws}`;
+      }
+
+      function createSnowEffect() {
+        for (let i = 0; i < 15; i++) {
+          setTimeout(() => {
+            const snowflake = document.createElement("div");
+            snowflake.className = "snow";
+            snowflake.textContent = "승리!";
+            snowflake.style.left = Math.random() * 100 + "vw";
+            snowflake.style.animationDuration = Math.random() * 2 + 2 + "s"; // 2-4초 사이의 랜덤한 시간
+            document.body.appendChild(snowflake);
+
+            snowflake.addEventListener("animationend", () => {
+              snowflake.remove();
+            });
+          }, i * 200);
+        }
       }
     </script>
   </body>
