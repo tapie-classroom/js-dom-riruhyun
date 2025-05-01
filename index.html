@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가위바위보 게임</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>JUST VERY SIMPLE SIMPLE AND FUN한 가위바위보 게임</h1>
+    <div class="game-container">
+      <div class="choices">
+        <button onclick="play('가위')">가위 ✌️</button>
+        <button onclick="play('바위')">바위 ✊</button>
+        <button onclick="play('보')">보 ✋</button>
+      </div>
+      <div class="result" id="result">게임을 시작해주세요!</div>
+      <div class="score" id="score">승: 0 | 패: 0 | 무: 0</div>
+    </div>
+    <br />
+    <button onclick="clickInf()" id="clickInf">
+      과연 가위바위보는 진짜 33%인가
+    </button>
+    <script src="script.js"></script>
+  </body>
+</html>
